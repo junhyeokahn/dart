@@ -654,6 +654,11 @@ void BodyNode(py::module& m)
           },
           ::py::arg("inertia"))
       .def(
+          "getInertia",
+          +[](const dart::dynamics::BodyNode* self)
+              -> const dart::dynamics::Inertia& { return self->getInertia(); },
+          ::py::return_value_policy::reference_internal)
+      .def(
           "setLocalCOM",
           +[](dart::dynamics::BodyNode* self, const Eigen::Vector3d& _com) {
             self->setLocalCOM(_com);
